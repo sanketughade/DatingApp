@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using API.Data;
+using API.Helpers;
 using API.Interfaces;
 using API.Middleware;
 using API.Services;
@@ -35,6 +36,8 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
             services.AddDbContext<DataContext>(options => 
             {
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
