@@ -14,7 +14,7 @@ export class BusyService {
     this.spinnerService.show(undefined, {
       type: "line-scale-party",
       size: "large",
-      bdColor: "rgba(255, 255, 255, 0)",
+      bdColor: "rgba(21, 20, 21, 0.8)",
       color: "white",
       template:
         "<img src='https://media.giphy.com/media/o8igknyuKs6aY/giphy.gif' />",
