@@ -12,7 +12,6 @@ import { AdminService } from 'src/app/_services/admin.service';
 export class UserManagementComponent implements OnInit {
   users: Partial<User[]>;
   bsModalRef: BsModalRef;
-  config: ModalOptions;
   constructor(private adminService: AdminService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
@@ -26,14 +25,14 @@ export class UserManagementComponent implements OnInit {
   }
 
   openRolesModal(user: User) {
-    this.config = {
+      const config  = {
       class: 'modal-dialog-centered',
       initialState: {
         user,
         roles: this.getRolesArray(user)
       }
     }
-    this.bsModalRef = this.modalService.show(RolesModalsComponent, this.config);
+    this.bsModalRef = this.modalService.show(RolesModalsComponent, config);
     this.bsModalRef.content.updateSelectedRoles.subscribe(values => {
       const rolesToUpdate = {
         roles: [...values.filter(el => el.checked === true).map(el => el.name)]
