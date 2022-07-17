@@ -55,17 +55,17 @@ namespace API
             });
             services.AddCors();
             services.AddIdentityServices(_config);
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                    .AddJwtBearer(options => 
-                    {
-                        options.TokenValidationParameters = new TokenValidationParameters
-                        {
-                            ValidateIssuerSigningKey = true,
-                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
-                            ValidateIssuer = false,
-                            ValidateAudience = false
-                        };
-                    });
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //         .AddJwtBearer(options => 
+            //         {
+            //             options.TokenValidationParameters = new TokenValidationParameters
+            //             {
+            //                 ValidateIssuerSigningKey = true,
+            //                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
+            //                 ValidateIssuer = false,
+            //                 ValidateAudience = false
+            //             };
+            //         });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
